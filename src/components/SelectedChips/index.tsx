@@ -12,13 +12,16 @@ export const SelectedChips: React.FC<SelectedChipsProps> = ({
   onDeselectChip,
   backspaceCount,
 }) => {
+  console.log(backspaceCount);
   return (
     <>
-      {selectedChipsOptions.map((user) => (
+      {selectedChipsOptions.map((user, index: number) => (
         <p
           key={user.userId}
           className="chip"
-          data-remove-count={backspaceCount}
+          {...(index === selectedChipsOptions.length - 1 && {
+            ...{ "data-remove-count": backspaceCount },
+          })}
         >
           <img src={user.profile} alt={user.name} className="chip-img" />
           <span>{user.name}</span>

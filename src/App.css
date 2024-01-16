@@ -1,5 +1,5 @@
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .chips-container {
@@ -30,8 +30,9 @@
   border-radius: 10px;
 }
 
-.chip[data-remove-count="1"]:nth-last-child(1) {
+.chip[data-remove-count="1"] {
   background: #0b57d0;
+  color: #f8fafd;
 }
 
 .chip-img {
