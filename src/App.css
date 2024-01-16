@@ -1,0 +1,77 @@
+.chips-container {
+  display: flex;
+  width: 100%;
+  background: rgb(233, 229, 229);
+  padding: 10px;
+}
+
+.chips {
+  display: flex;
+  gap: 6px;
+  position: relative;
+}
+
+.chip {
+  padding: 0.4em 0.6em;
+  background-color: blue;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  border-radius: 10px;
+}
+
+.chip[data-remove-count="1"]:nth-last-child(1) {
+  background: #000;
+}
+
+.chip-remove-btn {
+  background-color: transparent;
+  border: 0;
+  color: rgb(252, 7, 7);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.chips-dropdown-container {
+  position: relative;
+}
+
+.chips-dropdown {
+  background-color: rgb(255, 255, 255);
+  width: max(150px, 100%);
+  position: absolute;
+  padding: 8px 6px;
+  top: 35px;
+  border-radius: 10px;
+  box-shadow: 6px 6px 4px rgb(233, 229, 229);
+  border-left: 1px solid #aaa;
+}
+
+.chip-option {
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.chips-dropdown:hover > .chip-option[data-selected="true"] {
+  background: rgb(255, 255, 255);
+  color: black;
+}
+
+.chip-option[data-selected="true"],
+.chips-dropdown:hover > .chip-option:hover {
+  background: blue;
+  color: white;
+}
+
+.chip-input {
+  border: 0;
+  outline: none;
+  background: transparent;
+  padding-left: 3px;
+}
+
+.no-options {
+  padding: 8px;
+}
