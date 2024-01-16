@@ -1,15 +1,15 @@
-// ChipsComponent.tsx
 import React from "react";
 import { useChips } from "./useChips";
 import { SelectedChips } from "../SelectedChips";
 import { ChipsDropdown } from "../ChipsDropdown";
 import { ChipInput } from "../ChipInput";
+import { User } from "../../interfaces/User";
 
 interface ChipsComponentProps {
-  options: string[];
+  options: User[];
 }
 
-export const ChipsComponent = ({options}: ChipsComponentProps) => {
+export const ChipsComponent = ({ options }: ChipsComponentProps) => {
   const {
     backSpaceCount,
     selectedChipsOptions,
@@ -28,25 +28,28 @@ export const ChipsComponent = ({options}: ChipsComponentProps) => {
 
   return (
     <div className="chips-container">
-      <SelectedChips
-        selectedChipsOptions={selectedChipsOptions}
-        onDeselectChip={onDeselectChip}
-        backspaceCount={backSpaceCount}
-      />
-      <ChipsDropdown
-        dropdownHidden={dropdownHidden}
-        filteredOptions={filteredOptions}
-        onSelectChip={onSelectChip}
-        selectedOption={selectedOption}
-        setIsMouseOverDropdown={setIsMouseOverDropdown}
-      />
-      <ChipInput
-        setSearchInput={setSearchInput}
-        searchInput={searchInput}
-        onInputFocus={onInputFocus}
-        onInputBlur={onInputBlur}
-        onKeyPress={onKeyPress}
-      />
+      <div className="chips">
+        <SelectedChips
+          selectedChipsOptions={selectedChipsOptions}
+          onDeselectChip={onDeselectChip}
+          backspaceCount={backSpaceCount}
+        />
+        <ChipsDropdown
+          dropdownHidden={dropdownHidden}
+          filteredOptions={filteredOptions}
+          onSelectChip={onSelectChip}
+          selectedOption={selectedOption}
+          setIsMouseOverDropdown={setIsMouseOverDropdown}
+        />
+
+        <ChipInput
+          setSearchInput={setSearchInput}
+          searchInput={searchInput}
+          onInputFocus={onInputFocus}
+          onInputBlur={onInputBlur}
+          onKeyPress={onKeyPress}
+        />
+      </div>
     </div>
   );
 };

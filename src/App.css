@@ -1,20 +1,29 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
 .chips-container {
   display: flex;
+  gap: 10px;
   width: 100%;
   background: rgb(233, 229, 229);
-  padding: 10px;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 .chips {
   display: flex;
   gap: 6px;
+  column-gap: 10px;
+  flex-wrap: wrap;
+  padding: 20px;
   position: relative;
 }
 
 .chip {
   padding: 0.4em 0.6em;
-  background-color: blue;
-  color: white;
+  background-color: #f8fafd;
+  color: #444746;
   display: flex;
   align-items: center;
   gap: 3px;
@@ -22,7 +31,13 @@
 }
 
 .chip[data-remove-count="1"]:nth-last-child(1) {
-  background: #000;
+  background: #0b57d0;
+}
+
+.chip-img {
+  width: 30px;
+  aspect-ratio: 1;
+  border-radius: 50%;
 }
 
 .chip-remove-btn {
@@ -30,7 +45,8 @@
   border: 0;
   color: rgb(252, 7, 7);
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 400;
+  font-size: 20px;
 }
 
 .chips-dropdown-container {
@@ -39,7 +55,7 @@
 
 .chips-dropdown {
   background-color: rgb(255, 255, 255);
-  width: max(150px, 100%);
+  width: max(170px, 100%);
   position: absolute;
   padding: 8px 6px;
   top: 35px;
@@ -49,6 +65,10 @@
 }
 
 .chip-option {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 3px;
   padding: 8px;
   border-radius: 10px;
   cursor: pointer;
@@ -70,6 +90,8 @@
   outline: none;
   background: transparent;
   padding-left: 3px;
+  font-size: 16px;
+  border-bottom: 1px solid #444746;
 }
 
 .no-options {

@@ -1,14 +1,14 @@
+import React from 'react';
 import './App.css'
 import { ChipsComponent } from './components/ChipsComponent'
+import { UsersData } from './constants/users';
 
 function App() {
-  const chipOptions = ["react", "javascript", "css", "c++", "python", "dotnet core"];
-
   return (
-    <div>
-      <ChipsComponent options={chipOptions} />
+    <div className='main'>
+      <ChipsComponent options={UsersData}/>
     </div>
   )
 }
 
-export default App
+export default App;

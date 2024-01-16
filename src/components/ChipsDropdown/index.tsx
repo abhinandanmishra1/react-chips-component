@@ -1,9 +1,10 @@
 import React from "react";
+import { User } from "../../interfaces/User";
 
 interface ChipsDropdownProps {
   dropdownHidden: boolean;
-  filteredOptions: string[];
-  onSelectChip: (chip: string) => void;
+  filteredOptions: User[];
+  onSelectChip: (chip: User) => void;
   selectedOption: number;
   setIsMouseOverDropdown: (is: boolean) => void;
 }
@@ -23,14 +24,15 @@ export const ChipsDropdown: React.FC<ChipsDropdownProps> = ({
       className="chips-dropdown-container"
     >
       <div className="chips-dropdown">
-        {filteredOptions.map((chip, index) => (
+        {filteredOptions.map((user, index) => (
           <p
-            key={chip}
+            key={user.userId}
             className="chip-option"
             data-selected={selectedOption === index}
-            onClick={() => onSelectChip(chip)}
+            onClick={() => onSelectChip(user)}
           >
-            {chip}
+            <img src={user.profile} alt={user.name} className="chip-img" />
+            <span>{user.name}</span>
           </p>
         ))}
 

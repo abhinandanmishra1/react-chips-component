@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
+import { User } from "../../interfaces/User";
 
-export const useChips = (chipOptions: string[]) => {
-const [selectedChips, setSelectedChips] = useState<Record<string, boolean>>({});
-const [selectedChipsOptions, setSelectedChipsOptions] = useState<string[]>([]);
+export const useChips = (chipOptions: User[]) => {
+const [selectedChips, setSelectedChips] = useState<Record<number, boolean>>({});
+const [selectedChipsOptions, setSelectedChipsOptions] = useState<User[]>([]);
 const [dropdownHidden, setDropdownHidden] = useState(true);
 const [searchInput, setSearchInput] = useState("");
 const [isMouseOverDropdown, setIsMouseOverDropdown] = useState(false);
@@ -11,26 +12,26 @@ const [selectedOption, setSelectedOption] = useState(0);
 
 const filteredOptions = useMemo(() => {
   return chipOptions.filter(
-    (chip) => !selectedChips[chip] && chip.startsWith(searchInput)
+    ({userId, name}) => !selectedChips[userId] && name.startsWith(searchInput)
   );
 }, [selectedChips, searchInput]);
 
-const onSelectChip = (chip: string) => {
+const onSelectChip = (user: User) => {
   setSearchInput("");
-  setSelectedChipsOptions((curr) => [...curr, chip]);
+  setSelectedChipsOptions((curr) => [...curr, user]);
   setSelectedChips((currentSelectedChip) => ({
     ...currentSelectedChip,
-    [chip]: true,
+    [user.userId]: true,
   }));
   setBackSpaceCount(0);
   setSelectedOption(0);
 };
 
-const onDeselectChip = (chip: string) => {
+const onDeselectChip = (user: User) => {
   setSearchInput("");
-  setSelectedChipsOptions((curr) => curr.filter((ch) => ch != chip));
+  setSelectedChipsOptions((curr) => curr.filter((curr) => curr.userId != user.userId));
   setSelectedChips((currentSelectChips) => {
-    const { [chip]: _, ...rest } = currentSelectChips;
+    const { [user.userId]: _, ...rest } = currentSelectChips;
     return rest;
   });
 

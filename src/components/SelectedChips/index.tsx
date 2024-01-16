@@ -1,30 +1,36 @@
 import React from "react";
+import { User } from "../../interfaces/User";
 
 interface SelectedChipsProps {
-  selectedChipsOptions: string[];
-  onDeselectChip: (chip: string) => void;
+  selectedChipsOptions: User[];
+  onDeselectChip: (user: User) => void;
   backspaceCount: number;
 }
 
 export const SelectedChips: React.FC<SelectedChipsProps> = ({
   selectedChipsOptions,
   onDeselectChip,
-  backspaceCount
+  backspaceCount,
 }) => {
   return (
-    <div className="chips">
-      {selectedChipsOptions.map((chip) => (
-        <p key={chip} className="chip" data-remove-count={backspaceCount}>
-          {chip}
+    <>
+      {selectedChipsOptions.map((user) => (
+        <p
+          key={user.userId}
+          className="chip"
+          data-remove-count={backspaceCount}
+        >
+          <img src={user.profile} alt={user.name} className="chip-img" />
+          <span>{user.name}</span>
           <button
             className="chip-remove-btn"
-            onClick={() => onDeselectChip(chip)}
+            onClick={() => onDeselectChip(user)}
           >
             {" "}
             x
           </button>
         </p>
       ))}
-    </div>
+    </>
   );
 };
